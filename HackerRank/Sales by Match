@@ -1,0 +1,26 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class SockMerchant {
+
+    static int sockMerchant(int n, int[] ar) {
+        Map<Integer, Integer> colorCount = new HashMap<>();
+        int pairs = 0;
+
+        for (int sock : ar) {
+            if (colorCount.containsKey(sock)) {
+                int count = colorCount.get(sock) + 1;
+                colorCount.put(sock, count);
+
+                // Every time count is even, we found a pair
+                if (count % 2 == 0) {
+                    pairs++;
+                }
+            } else {
+                colorCount.put(sock, 1);
+            }
+        }
+
+        return pairs;
+    }
+}
